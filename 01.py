@@ -5,13 +5,13 @@ input = '36743676522426214741687639282183216978128565594112364817283598621384839
 
 sum = 0
 for i in range(0, len(input)):
-    if input[(i - 1)] == input[i]:
+    if input[i-1] == input[i]:
         sum += int(input[i])
 print sum
 
 sum_half = 0
 half_length = len(input) / 2
 for i in range(0, len(input)):
-    if input[i] == input[(i - half_length)]:
+    if input[i] == input[i-half_length]:
         sum_half += int(input[i])
 print sum_half
