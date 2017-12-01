@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# IDEs and editors
+.idea/
+*.iml
+.settings/
+
