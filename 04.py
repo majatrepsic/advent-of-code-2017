@@ -1,5 +1,7 @@
 import csv
 
+# Part one
+
 valid_inputs = 0
 with open('inputs/04.txt', 'rb') as csvfile:
     input_reader = csv.reader(csvfile, delimiter=' ')
@@ -10,8 +12,7 @@ with open('inputs/04.txt', 'rb') as csvfile:
             valid_inputs += 1
 print valid_inputs
 
-
-
+# Part two
 
 def check_permutations(row):
     for i in range(0,len(row)):
@@ -25,7 +26,6 @@ def check_permutations(row):
 
 
 valid_inputs_permutation = 0
-
 with open('inputs/04.txt', 'rb') as csvfile:
     input_reader = csv.reader(csvfile, delimiter=' ')
     for row in input_reader:
@@ -34,4 +34,3 @@ with open('inputs/04.txt', 'rb') as csvfile:
             if check_permutations(row):
                 valid_inputs_permutation += 1
 print valid_inputs_permutation
-
