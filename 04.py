@@ -12,11 +12,12 @@ with open('inputs/04.txt', 'rb') as csvfile:
             valid_inputs += 1
 print valid_inputs
 
+
 # Part two
 
 def check_permutations(row):
-    for i in range(0,len(row)):
-        for j in range (i+1, len(row)):
+    for i in range(0, len(row)):
+        for j in range(i + 1, len(row)):
             # print row[i] + ',' + row[j]
             # print str(sorted(row[i])) + ',' + str(sorted(row[j]))
             if (len(row[i]) == len(row[j])) \
