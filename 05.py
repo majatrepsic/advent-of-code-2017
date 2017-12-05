@@ -27,3 +27,4 @@ while next_position >= 0 and next_position < len(maze):
         maze[position] += 1
     position = next_position
     steps += 1
+print steps
