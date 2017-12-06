@@ -1,4 +1,4 @@
-with open('inputs/06_test.txt') as f:
+with open('inputs/06.txt') as f:
     banks = map(int, f.readline().strip().split("\t"))
 
 configurations = set()
@@ -9,8 +9,8 @@ while len(configurations) == 0 or len(configurations)==iterations:
     configurations.add(hash(tuple(banks)))
     iterations += 1
 
-    print banks
-    print hash(tuple(banks))
+    # print banks
+    # print hash(tuple(banks))
     # print len(configurations)
     # print iterations
 
@@ -19,26 +19,58 @@ while len(configurations) == 0 or len(configurations)==iterations:
         if banks[i] > banks[largest_bank]:
             largest_bank = i
 
-
-    # print largest_bank
-
     largest_bank_size = banks[largest_bank]
     banks[largest_bank] = 0
 
-    # print largest_bank_size%len(banks)
-
+    # distribute values in whole array
     for i in range(0, len(banks)):
         banks[i] += largest_bank_size/len(banks)
-        # print (largest_bank + i) % len(banks)
-        if largest_bank_size%len(banks) != 0 \
-                and i != largest_bank \
-                and (largest_bank+i) % len(banks) <= largest_bank_size % len(banks):
-            banks[i] += 1
+
+    # distribute the rest
+    for i in range(0, largest_bank_size%len(banks)):
+        index = (largest_bank + i + 1)% len(banks)
+        banks[index] += 1
 
 print len(configurations)
 
 
 
+with open('inputs/06.txt') as f:
+    banks = map(int, f.readline().strip().split("\t"))
 
-# print hash(tuple([9, 12, 11, 8, 7, 6, 0, 3, 11, 1, 6, 15, 5, 13, 4, 1]))
-# print hash(tuple([9, 12, 11, 8, 8, 6, 0, 3, 11, 1, 6, 14, 5, 13, 4, 1]))
+configurations = list()
+current_hash = hash(tuple(banks))
+# configurations.append(current_hash)
+
+while current_hash not in configurations:
+# while iterations < 7:
+
+    configurations.append(current_hash)
+    # iterations += 1
+
+    # print banks
+    # print hash(tuple(banks))
+    # print len(configurations)
+    # print iterations
+
+    largest_bank = 0
+    for i in range(0, len(banks)):
+        if banks[i] > banks[largest_bank]:
+            largest_bank = i
+
+    largest_bank_size = banks[largest_bank]
+    banks[largest_bank] = 0
+
+    # distribute values in whole array
+    for i in range(0, len(banks)):
+        banks[i] += largest_bank_size/len(banks)
+
+    # distribute the rest
+    for i in range(0, largest_bank_size%len(banks)):
+        index = (largest_bank + i + 1)% len(banks)
+        banks[index] += 1
+
+    current_hash = hash(tuple(banks))
+
+print len(configurations)
+
