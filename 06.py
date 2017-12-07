@@ -5,14 +5,9 @@ configurations = set()
 iterations = 0
 
 while len(configurations) == 0 or len(configurations)==iterations:
-# while iterations < 7:
     configurations.add(hash(tuple(banks)))
     iterations += 1
 
-    # print banks
-    # print hash(tuple(banks))
-    # print len(configurations)
-    # print iterations
 
     largest_bank = 0
     for i in range(0, len(banks)):
@@ -33,26 +28,14 @@ while len(configurations) == 0 or len(configurations)==iterations:
 
 print len(configurations)
 
-
-
 with open('inputs/06.txt') as f:
     banks = map(int, f.readline().strip().split("\t"))
 
 configurations = list()
 current_hash = hash(tuple(banks))
-# configurations.append(current_hash)
 
 while current_hash not in configurations:
-# while iterations < 7:
-
     configurations.append(current_hash)
-    # iterations += 1
-
-    # print banks
-    # print hash(tuple(banks))
-    # print len(configurations)
-    # print iterations
-
     largest_bank = 0
     for i in range(0, len(banks)):
         if banks[i] > banks[largest_bank]:
@@ -72,5 +55,4 @@ while current_hash not in configurations:
 
     current_hash = hash(tuple(banks))
 
-print len(configurations)
-
+print len(configurations) - configurations.index(current_hash)
